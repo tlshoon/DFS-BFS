@@ -126,37 +126,37 @@ print(graph)'''
 #
 # bfs(graph, 1, visited)
 
-# 음료수 얼려 먹기
+#음료수 얼려 먹기
 # n,m = map(int,input().split())
 #
 # ice_board = []
 # for i in range(n):
 #     ice_board.append(list(map(int,input())))
 #
-# count = 0
+# dx = [0,0,-1,1]   # 상하좌우 진행용 방향 리스트
+# dy = [-1,1,0,0]
 #
-# dx = [-1,1,0,0]
-# dy = [0,0,-1,1]
+# count = 0  # 아이스크림 개수
 #
-# def dfs(start_x, start_y):
-#     ice_board[start_x][start_y] = 1
 #
-#     for i in range(4):
+# def dfs(start_x,start_y):
 #
-#         nx = start_x + dx[i]
+#     ice_board[start_x][start_y] = 1  # 현재 노드를 방문 처리
+#
+#     for i in range(4):  # 현재 노드와 인접한 노드 모든 노드들을 탐색하며, 방문 가능할 경우 방문
+#         nx = start_x + dx[i]  # 인접 노드 좌표
 #         ny = start_y + dy[i]
 #
-#         if(nx >= 0 and nx < n and ny >= 0 and ny < m):
-#             if(ice_board[nx][ny] == 0):
-#                 dfs(nx,ny)
+#         if (nx >=0 and nx < n and ny >= 0 and ny < m):  # 인접 노드가 얼음판 내부에 위치할 경우
+#             if(ice_board[nx][ny] == 0):  # 입접 노드에 음료수를 채울 수 있는지 확인
+#                 dfs(nx,ny)  # 인접 노드 방문
 #
 #
 # for i in range(n):
 #     for j in range(m):
-#         if (ice_board[i][j] == 0):
-#             dfs(i,j)
+#         if (ice_board[i][j] == 0):  # 해당 노드에 음료수를 채울 수 있다면
+#             dfs(i,j) # 해당 노드에 dfs 탐색 시작
 #             count += 1
-#
 # print(count)
 
 
@@ -189,8 +189,7 @@ print(graph)'''
 #             nx = x + dx[i]
 #             ny = y + dy[i]
 #
-#             if (nx >=0 and nx < n and ny >=0 and ny < m):
-#
+#          if(nx >= 0 and nx < n and ny >= 0 and ny < m):
 #                 if(check[nx][ny] == 0 and graph[nx][ny] == 1):  # 인접한 노드를 방문할 수 있는지 확인
 #
 #                     queue.append((nx,ny))
