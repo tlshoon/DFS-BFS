@@ -193,5 +193,96 @@ print(graph)'''
 #
 # print(bfs(0,0))
 
+######################## 3장 문제 ########################
+# from collections import deque
+#
+# n,m,k,x = map(int,input().split())
+# graph = [[] for _ in range(n+1)]
+#
+# for _ in range(m):
+#     a,b = map(int,input().split())
+#     graph[a].append(b)
+#
+# distance = [-1] * (n+1)  # 모든 도시에 대한 최단 거리 초기화
+# distance[x] = 0
+#
+# q = deque([x])
+# while q:
+#     now = q.popleft()
+#     for next_node in graph[now]:  # 현재 도시에서 이동할 수 있는 모든 도시를 확인
+#         if distance[next_node] == -1:  # 아직 방문하지 않은 도시라면
+#             distance[next_node] = distance[now] + 1
+#             q.append(next_node)
+#
+# check = False
+# for i in range(1,n+1):
+#     if distance[i] == k:
+#         print(i)
+#         check = True
+#
+# if check == False:
+#     print(-1)
 
-
+#  연구소
+# n,m = map(int,input().split())
+# data = []
+# temp = [[0] * m for _ in range(n)]  # 벽을 설치한 뒤의 맵 리스트
+#
+# for _ in range(n):
+#     data.append(list(map(int,input().split())))
+#
+#
+# dx = [-1,0,1,0]
+# dy = [0,1,0,-1]
+#
+# result = 0
+#
+# # DFS를 이용해 각 바이러스가 사방으로 퍼지도록 하기
+#
+# def virus(x,y):
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+#         # 상,하,좌,우 중에서 바이러스가 퍼질 수 있는 경우
+#         if nx >= 0 and nx < n and ny >= 0 and ny < m:
+#             if temp[nx][ny] == 0:
+#                 temp[nx][ny] = 2
+#                 virus(nx,ny)
+#
+# # 현재 맵에서 안전 영역의 크기 계산하는 메서드
+# def get_score():
+#     score = 0
+#     for i in range(n):
+#         for j in range(m):
+#             if temp[i][j] == 0:
+#                 score += 1
+#     return score
+#
+# # DFS를 이용해 울타리를 설치하면서, 매번 안전 영역의 크기 계산
+# def dfs(count):
+#     global result
+#     # 울타리가 세 개 설치된 경우
+#     if count == 3:
+#         for i in range(n):
+#             for j in result(m):
+#                 temp[i][j] = data[i][j]
+#         # 각 바이러스의 위치에서 전파 진행
+#         for i in range(n):
+#             for j in range(m):
+#                 if temp[i][j] == 2:
+#                     virus(x,y)
+#         # 안전 영역의 최댓값 계산
+#         result = max(result,get_score())
+#         return
+#     # 빈 공간에 울타리 설치
+#     for i in range(n):
+#         for j in range(m):
+#             if data[i][j] == 0:
+#                 data[i][j] = 1
+#                 count += 1
+#                 dfs(count)
+#                 data[i][j] = 0
+#                 count -= 1
+#
+# dfs(0)
+# print(result)
