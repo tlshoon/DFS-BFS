@@ -223,6 +223,27 @@ print(graph)'''
 #
 # print(bfs(0,0))
 
+# dfs 풀이
+# n, m = map(int,input().split())
+# graph = [list(map(int,input())) for _ in range(n)]
+#
+# dx = [-1,1,0,0]
+# dy = [0,0,-1,1]
+#
+# def dfs(x,y):
+#
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+#         if 0 <= nx and nx < n and 0 <= ny and ny < m:
+#             if graph[nx][ny] == 1:
+#                 graph[nx][ny] = graph[x][y] + 1
+#                 dfs(nx,ny)
+#
+#     return graph[n-1][m-1]
+#
+# print(dfs(0,0))
+
 ######################## 3장 문제 ########################
 # from collections import deque
 #
